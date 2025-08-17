@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Tùy chỉnh toàn bộ trang web */
+html {
+    /* Cho Firefox */
+    scrollbar-width: thin;
+    /* Làm thanh cuộn mỏng hơn */
+    scrollbar-color: #333 #f1f1f1;
+    /* Màu của thanh cuộn và nền */
+
+    /* Cho Webkit (Chrome, Safari, Edge) */
+    &::-webkit-scrollbar {
+        width: 10px;
+        /* Độ rộng của thanh cuộn */
+        height: 10px;
+        /* Độ cao của thanh cuộn ngang (nếu có) */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        /* Màu nền của track */
+        border-radius: 5px;
+        /* Bo góc track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #333;
+        /* Màu đen nhạt cho thumb */
+        border-radius: 5px;
+        /* Bo góc thumb */
+        border: 2px solid #f1f1f1;
+        /* Viền xung quanh thumb để tạo khoảng cách */
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #000;
+        /* Màu đen đậm hơn khi hover */
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: #f1f1f1;
+        /* Màu góc nếu có thanh cuộn ngang và dọc giao nhau */
+    }
+}
+
+/* Nếu chỉ muốn áp dụng cho một phần tử cụ thể, ví dụ .partner__logos */
+.partner__logos {
+    overflow-y: auto;
+    /* Bật thanh cuộn dọc nếu nội dung vượt quá */
+    max-height: 300px;
+    /* Giới hạn chiều cao để kiểm tra thanh cuộn, tùy chỉnh theo nhu cầu */
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 5px;
+        border: 2px solid #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #000;
+    }
+}

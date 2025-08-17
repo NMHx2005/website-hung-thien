@@ -1,0 +1,170 @@
+.footer__contact {
+    background: linear-gradient(135deg, #1e3c72 0%, #e0e0e0 100%);
+    margin-top: 24px;
+
+    .container {
+        text-align: center;
+        padding: 40px 20px; // Thêm padding để không sát lề
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #fff; // Đặt màu trắng để nổi bật trên nền gradient
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 20px;
+            color: #f5f5f5; // Màu nhạt hơn để làm nổi bật tiêu đề
+        }
+    }
+
+    .footer__content {
+        display: flex;
+        justify-content: center;
+
+        form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            align-items: center;
+        }
+
+        input {
+            border: 0;
+            padding: 18px 20px;
+            border-radius: 30px;
+            width: 100%;
+            margin-right: 4px;
+            outline: 0;
+            font-size: 1em;
+            color: #888;
+        }
+
+        button {
+            position: relative; // Đảm bảo pseudo-element hoạt động đúng
+            height: 100%; // Đồng bộ chiều cao với input
+            padding: 18px 20px;
+            border: none; // Bỏ border mặc định
+            cursor: pointer;
+        }
+
+        // Hiệu ứng cho button
+        button::before {
+            content: "";
+            border-radius: 45px;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.04);
+            transform: scaleX(0);
+            transform-origin: 50%;
+            transition: transform 0.5s ease-out;
+        }
+
+        button:hover::before {
+            transform: scaleX(1); // Kích hoạt hiệu ứng khi hover
+        }
+    }
+
+    .ant-input-search-button {
+        border-radius: 50px;
+        background: linear-gradient(to right, #ff7e31, #ff5a00);
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .ant-input-search-button:hover {
+        background: linear-gradient(to right, #ff5a00, #ff7e31);
+    }
+
+    .ant-input-lg {
+        border-radius: 50px;
+        width: 300px;
+        font-size: 1em;
+        color: #888;
+    }
+}
+
+.header__footer {
+    background-color: black;
+    color: white;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title__footer {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .nav__footer {
+        display: flex;
+        gap: 70px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s ease; // Thêm hiệu ứng hover cho link
+
+            &:hover {
+                color: #ff7e31; // Đồng bộ màu cam với button
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .footer__contact {
+        .footer__content {
+            form {
+                flex-direction: column;
+            }
+        }
+
+        .ant-input-lg {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .ant-input-search-button {
+            width: 100%;
+        }
+    }
+
+    .header__footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px; // Giảm padding trên mobile
+
+        .nav__footer {
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+
+            div {
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            a {
+                font-size: 16px; // Giảm font-size trên mobile
+            }
+        }
+    }
+}

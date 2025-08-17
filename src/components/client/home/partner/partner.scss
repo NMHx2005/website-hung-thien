@@ -1,0 +1,68 @@
+.partner {
+    &__title {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &__subtitle {
+        font-size: 16px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    &__underline {
+        width: 50px;
+        height: 3px;
+        background-color: #d0021b;
+        margin: 10px auto;
+    }
+
+    &__logos {
+        margin-top: 20px;
+
+        .swiper {
+            padding: 0 10px; // Thêm padding để tránh logo sát mép
+        }
+    }
+
+    &__logo-item {
+        padding: 12px;
+        border: 1px solid #dbdbdb;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__logo-item img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .partner {
+        &__logo-item {
+            padding: 10px;
+        }
+
+        &__logo-item img {
+            max-width: 100%;
+            // max-height: 100%;
+        }
+    }
+
+    .partner__logos {
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}

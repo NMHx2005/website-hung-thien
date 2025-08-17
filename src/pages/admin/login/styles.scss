@@ -1,0 +1,39 @@
+.admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+
+        .ant-card-head {
+            text-align: center;
+            font-size: 24px;
+            padding: 24px 16px;
+            border-bottom: none;
+        }
+
+        .ant-card-body {
+            padding: 24px;
+        }
+
+        .ant-form-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .ant-input-affix-wrapper {
+            border-radius: 6px;
+        }
+
+        .ant-btn {
+            border-radius: 6px;
+            height: 45px;
+            font-size: 16px;
+        }
+    }
+} 

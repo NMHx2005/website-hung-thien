@@ -1,0 +1,97 @@
+.header {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    position: relative;
+
+
+    .menu-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .title {
+        font-size: 40px;
+        font-weight: 700;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .slogan {
+        font-size: 72px;
+        font-weight: bold;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+
+@media (max-width: 1624px) {
+    .header .slogan {
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .header .slogan {
+        font-size: 48px;
+    }
+
+    .header .title {
+        font-size: 32px;
+    }
+
+    .header__content--left img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 1064px) {
+    .header .container {
+        width: 100%;
+        padding: 20px
+    }
+
+    .header .slogan {
+        font-size: 32px;
+    }
+
+    .header .title {
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .header .container {
+        flex-wrap: wrap;
+    }
+
+    .header__content--left {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header .slogan {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section__slogan .container>div div {
+        font-size: 32px;
+    }
+}
