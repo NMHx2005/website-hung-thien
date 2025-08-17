@@ -57,7 +57,7 @@ const Header = () => {
                             alt="Logo with abstract design"
                             className="logo"
                         />
-                        <div className="title" >HÙNG THIÊN</div>
+                        <div className="title" >HÙNG DÂN</div>
                     </div>
                     <div className="slogan" >CÔNG NGHỆ VÌ NHÂN DÂN</div>
                 </div>
