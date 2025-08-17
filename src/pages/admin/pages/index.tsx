@@ -120,7 +120,7 @@ const Pages: React.FC = () => {
                 open={modalVisible}
                 onCancel={() => setModalVisible(false)}
                 onOk={() => form.submit()}
-                form={form}
+            // form={form}
             >
                 <Form
                     form={form}
