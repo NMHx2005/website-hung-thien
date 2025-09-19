@@ -1,16 +1,16 @@
+import MissionSection from "@/components/client/home/mission/missionSection";
 import BenefitsSection from "@/components/client/home/benefit/benefitsSection";
-import CategoryList from "@/components/client/home/category/categoryList";
+import ProjectSection from "@/components/client/home/project/projectSection";
 import { NewEvents } from "@/components/client/home/events/newEvents";
 import Partner from "@/components/client/home/partner/partner";
-import Slogan from "@/components/client/home/slogan/Slogan";
 
 
 const HomePage = () => {
     return (
         <>
-            <Slogan />
+            <MissionSection />
             <BenefitsSection />
-            <CategoryList />
+            <ProjectSection />
             <Partner />
             <NewEvents />
         </>

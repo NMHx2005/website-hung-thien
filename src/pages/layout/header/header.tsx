@@ -46,7 +46,7 @@ const Header = () => {
                         <Dropdown menu={{ items }} placement="bottomRight" arrow={{ pointAtCenter: true }}>
                             {/* <Button>bottomRight</Button> */}
                             <div className="menu-icon" >
-                                <MenuOutlined />
+                                <MenuOutlined style={{ fontSize: '24px' }} />
                             </div>
                         </Dropdown>
                     </Space>
@@ -59,7 +59,6 @@ const Header = () => {
                         />
                         <div className="title" >HÙNG DÂN</div>
                     </div>
-                    <div className="slogan" >CÔNG NGHỆ VÌ NHÂN DÂN</div>
                 </div>
             </header>
         </>

@@ -11,8 +11,8 @@ const ButtonContact = () => {
         setIsOpen(!isOpen);
     };
 
-    // Xử lý click bên ngoài để đóng popup && !popupRef.current.contains(event.target)
-    const handleClickOutside = (event: any) => {
+    // Xử lý click bên ngoài để đóng popup
+    const handleClickOutside = () => {
         if (popupRef.current) {
             setIsOpen(false);
         }
@@ -54,7 +54,9 @@ const ButtonContact = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <div className="popup-icon messenger-icon"> </div>
+                            <div className="popup-icon messenger-icon">
+                                <MessageOutlined />
+                            </div>
                             <span>Messenger</span>
                         </a>
                     </div>
@@ -64,14 +66,16 @@ const ButtonContact = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <div className="popup-icon zalo-icon"></div>
+                            <div className="popup-icon zalo-icon">
+                                <MessageOutlined />
+                            </div>
                             <span>Zalo</span>
                         </a>
                     </div>
                     <div className="popup-item">
                         <a href="tel:+1234567890">
                             <div className="popup-icon phone-icon">
-
+                                <PhoneOutlined />
                             </div>
                             <span>Gọi ngay</span>
                         </a>

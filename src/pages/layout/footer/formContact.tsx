@@ -1,11 +1,11 @@
 import React from 'react';
-import { Input, Button } from 'antd';
+import { Button } from 'antd';
 import "./footer.scss"
 
 
 const FormContact = () => {
     // Optional: Add form submission handler
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Add your form submission logic here
     };
@@ -14,7 +14,7 @@ const FormContact = () => {
         <div className="footer__contact">
             <div className="container">
                 <h1>Gửi yêu cầu tư vấn miễn phí</h1>
-                <p>Hùng Thiên - Công Ty Thiết Kế Website Uy Tín, Chuyên Nghiệp, Chuẩn SEO</p>
+                <p>Hùng Dân - Công Ty Thiết Kế Website Uy Tín, Chuyên Nghiệp, Chuẩn SEO</p>
                 <div className="footer__content">
                     <form onSubmit={handleSubmit}>
                         <input

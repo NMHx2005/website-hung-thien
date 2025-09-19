@@ -7,50 +7,50 @@ const BenefitsSection = () => {
         <div className="benefits-section">
             <div className='container'>
                 <div className="section-title">
-                    <span> Lợi ích khởi tạo Website với Hùng Thiên</span>
+                    <span> Lợi ích khi làm việc với Hùng Dân</span>
                 </div>
                 <div className="benefits-grid">
                     {/* Mục 1 */}
                     <div className="benefit-item">
-                        <h3 className="benefit-title">Thiết kế chuyên nghiệp, chuẩn SEO</h3>
+                        <h3 className="benefit-title">Thiết kế website chuyên nghiệp</h3>
                         <div className="benefit-icon">
                             <ShoppingCartOutlined />
                         </div>
                         <p className="benefit-description">
-                            Website được thiết kế hiện đại, thân thiện với người dùng và tối ưu hóa chuẩn SEO giúp nâng cao thứ hạng trên Google, thu hút nhiều khách hàng tiềm năng.
+                            Hùng Dân cung cấp dịch vụ thiết kế website hiện đại, responsive tối ưu cho mọi thiết bị, giao diện thân thiện và trải nghiệm người dùng tuyệt vời.
                         </p>
                     </div>
 
                     {/* Mục 2 */}
                     <div className="benefit-item">
-                        <h3 className="benefit-title">Tốc độ tải nhanh, hoạt động ổn định</h3>
+                        <h3 className="benefit-title">Xây dựng thiết kế UI/UX hiện đại</h3>
                         <div className="benefit-icon">
                             <SoundOutlined />
                         </div>
                         <p className="benefit-description">
-                            Hùng Thiên sử dụng công nghệ tiên tiến và hạ tầng mạnh mẽ, đảm bảo website hoạt động mượt mà, tốc độ truy cập nhanh, không gián đoạn.
+                            Hùng Dân chuyên xây dựng thiết kế giao diện người dùng (UI) và trải nghiệm người dùng (UX) hiện đại, tối ưu hóa cho từng đối tượng khách hàng.
                         </p>
                     </div>
 
                     {/* Mục 3 */}
                     <div className="benefit-item">
-                        <h3 className="benefit-title">Tích hợp đầy đủ chức năng cần thiết</h3>
+                        <h3 className="benefit-title">Phát triển ứng dụng web toàn diện</h3>
                         <div className="benefit-icon">
                             <StarOutlined />
                         </div>
                         <p className="benefit-description">
-                            Từ quản lý sản phẩm, đơn hàng đến tích hợp thanh toán, chat trực tuyến… mọi tính năng đều được tích hợp đầy đủ, giúp doanh nghiệp vận hành hiệu quả.
+                            Hùng Dân phát triển các ứng dụng web đa nền tảng, từ website doanh nghiệp đến hệ thống quản lý phức tạp, đáp ứng mọi nhu cầu kinh doanh.
                         </p>
                     </div>
 
                     {/* Mục 4 */}
                     <div className="benefit-item">
-                        <h3 className="benefit-title">Hỗ trợ và bảo trì lâu dài</h3>
+                        <h3 className="benefit-title">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
                         <div className="benefit-icon">
                             <CustomerServiceOutlined />
                         </div>
                         <p className="benefit-description">
-                            Khách hàng được hỗ trợ kỹ thuật tận tâm và bảo trì website định kỳ, đảm bảo hệ thống luôn an toàn, cập nhật và hoạt động ổn định theo thời gian.
+                            Hùng Dân sở hữu đội ngũ chuyên gia giàu kinh nghiệm trong lĩnh vực thiết kế website, xây dựng thiết kế đồ họa và phát triển phần mềm, đảm bảo chất lượng cao.
                         </p>
                     </div>
                 </div>

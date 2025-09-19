@@ -6,7 +6,7 @@ const Footer = () => {
         <>
             <FormContact />
             <div className="header__footer">
-                <div className="title__footer">CÔNG TY CÔNG NGHỆ TƯƠNG LAI HÙNG THIÊN</div>
+                <div className="title__footer">CÔNG TY KHOA HỌC CÔNG NGHỆ HÙNG DÂN</div>
                 <div className="nav__footer">
                     <div>
                         <a href="#">Trang chủ</a>
