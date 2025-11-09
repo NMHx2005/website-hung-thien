@@ -1,78 +1,131 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from '@/utils/axios';
 import Cookies from 'js-cookie';
 
-export const useAuth = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+interface UseAuthOptions {
+    skipInitialCheck?: boolean;
+}
 
-    useEffect(() => {
-        checkAuth();
+interface RefreshResponse {
+    accessToken: string;
+    refreshToken: string;
+}
+
+const ACCESS_TOKEN_KEY = 'access_token';
+const REFRESH_TOKEN_KEY = 'refresh_token';
+
+const hasToken = () => Boolean(localStorage.getItem(ACCESS_TOKEN_KEY));
+
+export const useAuth = (options: UseAuthOptions = {}) => {
+    const { skipInitialCheck = false } = options;
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(hasToken());
+    const [loading, setLoading] = useState<boolean>(!skipInitialCheck);
+
+    const clearTokens = useCallback(() => {
+        localStorage.removeItem(ACCESS_TOKEN_KEY);
+        localStorage.removeItem(REFRESH_TOKEN_KEY);
+        Cookies.remove(REFRESH_TOKEN_KEY);
     }, []);
 
-    const checkAuth = async () => {
-        try {
-            const accessToken = localStorage.getItem('access_token');
-            if (!accessToken) {
-                throw new Error('No token');
-            }
-
-            await axios.get('/api/auth/me');
-            setIsAuthenticated(true);
-        } catch {
-            // Try to refresh token
-            try {
-                const refreshToken = Cookies.get('refresh_token');
-                if (!refreshToken) throw new Error('No refresh token');
-
-                const { data } = await axios.post('/api/auth/refresh-token', {
-                    refreshToken,
-                });
-
-                localStorage.setItem('access_token', data.accessToken);
-                Cookies.set('refresh_token', data.refreshToken, { 
-                    expires: 30, // 30 days
-                    secure: true,
-                    sameSite: 'strict'
-                });
-                setIsAuthenticated(true);
-            } catch {
-                setIsAuthenticated(false);
-                navigate('/admin/login');
-            }
-        } finally {
+    useEffect(() => {
+        if (skipInitialCheck) {
             setLoading(false);
+            return;
         }
-    };
 
-    const login = async (email: string, password: string) => {
-        const { data } = await axios.post('/api/auth/login', {
+        let isMounted = true;
+
+        const verify = async () => {
+            setLoading(true);
+            try {
+                await axios.get('/api/auth/me');
+                if (isMounted) {
+                    setIsAuthenticated(true);
+                }
+            } catch {
+                try {
+                    const refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY) || Cookies.get(REFRESH_TOKEN_KEY);
+                    if (!refreshToken) {
+                        throw new Error('Missing refresh token');
+                    }
+
+                    const { data } = await axios.post<RefreshResponse>('/api/auth/refresh-token', {
+                        refreshToken
+                    });
+
+                    localStorage.setItem(ACCESS_TOKEN_KEY, data.accessToken);
+                    localStorage.setItem(REFRESH_TOKEN_KEY, data.refreshToken);
+                    Cookies.set(REFRESH_TOKEN_KEY, data.refreshToken, {
+                        expires: 30,
+                        secure: true,
+                        sameSite: 'strict'
+                    });
+
+                    if (isMounted) {
+                        setIsAuthenticated(true);
+                    }
+                } catch {
+                    if (isMounted) {
+                        setIsAuthenticated(false);
+                    }
+                    clearTokens();
+                    if (location.pathname !== '/admin/login') {
+                        navigate('/admin/login', { replace: true });
+                    }
+                }
+            } finally {
+                if (isMounted) {
+                    setLoading(false);
+                }
+            }
+        };
+
+        verify();
+
+        return () => {
+            isMounted = false;
+        };
+    }, [navigate, location.pathname, skipInitialCheck, clearTokens]);
+
+    const login = useCallback(async (email: string, password: string) => {
+        const { data } = await axios.post<RefreshResponse>('/api/auth/login', {
             email,
-            password,
+            password
         });
 
-        localStorage.setItem('access_token', data.accessToken);
-        Cookies.set('refresh_token', data.refreshToken, { 
-            expires: 30, // 30 days
+        localStorage.setItem(ACCESS_TOKEN_KEY, data.accessToken);
+        localStorage.setItem(REFRESH_TOKEN_KEY, data.refreshToken);
+        Cookies.set(REFRESH_TOKEN_KEY, data.refreshToken, {
+            expires: 30,
             secure: true,
             sameSite: 'strict'
         });
         setIsAuthenticated(true);
-        navigate('/admin');
-    };
+        navigate('/admin', { replace: true });
+    }, [navigate]);
 
-    const logout = async () => {
+    const logout = useCallback(async () => {
         try {
             await axios.post('/api/auth/logout');
+        } catch (error) {
+            console.warn('Logout failed:', error);
         } finally {
-            localStorage.removeItem('access_token');
-            Cookies.remove('refresh_token');
+            clearTokens();
             setIsAuthenticated(false);
-            navigate('/admin/login');
+            navigate('/admin/login', { replace: true });
         }
-    };
+    }, [navigate]);
 
-    return { isAuthenticated, loading, login, logout };
-}; 
+    return useMemo(
+        () => ({
+            isAuthenticated,
+            loading,
+            login,
+            logout
+        }),
+        [isAuthenticated, loading, login, logout]
+    );
+};

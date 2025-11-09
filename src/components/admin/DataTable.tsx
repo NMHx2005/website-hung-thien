@@ -1,17 +1,12 @@
 import React from 'react';
 import { Table, Button, Space, Popconfirm, message } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import type { TableProps } from 'antd';
+import type { ColumnsType, TableProps } from 'antd/es/table';
 
 interface DataTableProps<T> extends Omit<TableProps<T>, 'columns'> {
     onEdit?: (record: T) => void;
     onDelete?: (record: T) => void;
-    columns: Array<{
-        title: string;
-        dataIndex: string;
-        key: string;
-        render?: (text: string, record: T) => React.ReactNode;
-    }>;
+    columns: ColumnsType<T>;
 }
 
 const DataTable = <T extends { _id: string }>({
@@ -21,21 +16,22 @@ const DataTable = <T extends { _id: string }>({
     ...props
 }: DataTableProps<T>) => {
     const handleDelete = async (record: T) => {
+        if (!onDelete) {
+            return;
+        }
         try {
-            if (onDelete) {
-                await onDelete(record);
-                message.success('Xóa thành công');
-            }
-        } catch {
-            message.error('Có lỗi xảy ra');
+            await onDelete(record);
+        } catch (error) {
+            message.error('Có lỗi xảy ra khi xóa');
+            throw error;
         }
     };
 
-    const actionColumn = {
+    const actionColumn: ColumnsType<T>[number] = {
         title: 'Thao tác',
         dataIndex: 'action',
         key: 'action',
-        render: (_: string, record: T) => (
+        render: (_: unknown, record: T) => (
             <Space size="middle">
                 {onEdit && (
                     <Button
@@ -62,7 +58,7 @@ const DataTable = <T extends { _id: string }>({
         ),
     };
 
-    const columns = [...userColumns];
+    const columns: ColumnsType<T> = [...userColumns];
     if (onEdit || onDelete) {
         columns.push(actionColumn);
     }

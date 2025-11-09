@@ -83,6 +83,10 @@
 
 
 @media (max-width: 767px) {
+    .header {
+        height: 50vh;
+    }
+
     .header .container {
         flex-wrap: wrap;
     }

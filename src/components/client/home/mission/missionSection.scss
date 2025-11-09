@@ -1,116 +1,101 @@
 .mission-section {
-    min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
+    overflow: hidden;
+    padding: clamp(72px, 13vw, 140px) 0;
+    background: linear-gradient(160deg, rgba(3, 0, 12, 0.9), rgba(8, 3, 20, 0.7)),
+        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    color: #fdfdfd;
+}
+
+.mission-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.12), transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(247, 91, 91, 0.24), transparent 50%),
+        linear-gradient(180deg, rgba(3, 0, 12, 0.7), rgba(3, 0, 12, 0.92));
+    opacity: 0.85;
+    z-index: 1;
 }
 
 .mission-content {
-    max-width: 1200px;
-    width: 100%;
+    position: relative;
     z-index: 2;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 6vw, 64px);
+    text-align: center;
+    display: grid;
+    gap: clamp(32px, 4vw, 56px);
 }
 
 .mission-heading {
-    margin-bottom: 60px;
-    
+    display: grid;
+    gap: 12px;
+
     h1 {
-        font-size: 4rem;
-        font-weight: 700;
         margin: 0;
-        line-height: 1.2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        
-        &:first-child {
-            margin-bottom: 20px;
-        }
+        font-size: clamp(2.75rem, 6vw, 4.2rem);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
     }
 }
 
 .mission-body {
+    max-width: 860px;
+    margin: 0 auto;
+    background: rgba(9, 2, 20, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: clamp(28px, 5vw, 48px);
+    box-shadow:
+        0 24px 48px rgba(3, 0, 12, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    display: grid;
+    gap: clamp(18px, 3vw, 28px);
+
     h2 {
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 3.4vw, 2.6rem);
         font-weight: 600;
-        margin-bottom: 40px;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        margin: 0;
+        text-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
     }
-    
+
     p {
-        font-size: 1.2rem;
+        font-size: clamp(1.05rem, 1.5vw, 1.2rem);
         line-height: 1.8;
-        margin-bottom: 30px;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.85);
     }
-    
+
     .mission-principle {
-        font-size: 1.4rem;
+        font-size: clamp(1.2rem, 2vw, 1.4rem);
         font-weight: 600;
         font-style: italic;
-        color: #ffd700;
-        margin: 40px 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    }
-}
-
-// Responsive design
-@media (max-width: 1200px) {
-    .mission-heading h1 {
-        font-size: 3.5rem;
-    }
-    
-    .mission-body h2 {
-        font-size: 2.2rem;
+        color: #ffd470;
+        padding: clamp(12px, 2vw, 16px) clamp(16px, 3vw, 24px);
+        border-radius: 16px;
+        background: linear-gradient(120deg, rgba(255, 212, 112, 0.18), rgba(255, 212, 112, 0.05));
+        border: 1px solid rgba(255, 212, 112, 0.25);
+        box-shadow: inset 0 0 24px rgba(255, 212, 112, 0.12);
     }
 }
 
 @media (max-width: 768px) {
     .mission-section {
-        padding: 60px 15px;
-        background-attachment: scroll;
-    }
-    
-    .mission-heading h1 {
-        font-size: 2.5rem;
-    }
-    
-    .mission-body {
-        h2 {
-            font-size: 1.8rem;
-        }
-        
-        p {
-            font-size: 1.1rem;
-        }
-        
-        .mission-principle {
-            font-size: 1.2rem;
-        }
+        padding: 72px 0 88px;
+        background-position: center;
     }
 }
 
-@media (max-width: 480px) {
-    .mission-heading h1 {
-        font-size: 2rem;
-    }
-    
-    .mission-body {
-        h2 {
-            font-size: 1.5rem;
-        }
-        
-        p {
-            font-size: 1rem;
-        }
-    }
+.mission-section {
+    // background: #050505 !important;
+}
+
+.mission-overlay {
+    display: none;
 }

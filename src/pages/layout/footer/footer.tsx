@@ -1,10 +1,10 @@
-import FormContact from "./formContact";
+// import FormContact from "./formContact";
 import "./footer.scss"
 
 const Footer = () => {
     return (
         <>
-            <FormContact />
+            {/* <FormContact /> */}
             <div className="header__footer">
                 <div className="title__footer">CÔNG TY KHOA HỌC CÔNG NGHỆ HÙNG DÂN</div>
                 <div className="nav__footer">

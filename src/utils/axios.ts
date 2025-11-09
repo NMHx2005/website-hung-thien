@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const instance = axios.create({
     // baseURL: import.meta.env.VITE_API_URL,
@@ -6,6 +7,7 @@ const instance = axios.create({
     headers: {
         'Content-Type': 'application/json',
     },
+    withCredentials: true,
 });
 
 // Request interceptor
@@ -36,11 +38,14 @@ instance.interceptors.response.use(
 
         // If the error status is 401 and there is no originalRequest._retry flag,
         // it means the token has expired and we need to refresh it
-        if (error.response.status === 401 && !originalRequest._retry) {
+        if (error.response?.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
 
             try {
-                const refreshToken = localStorage.getItem('refresh_token');
+                const refreshToken = localStorage.getItem('refresh_token') || Cookies.get('refresh_token');
+                if (!refreshToken) {
+                    throw new Error('Missing refresh token');
+                }
                 const response = await instance.post('/api/auth/refresh-token', {
                     refreshToken,
                 });
@@ -49,6 +54,11 @@ instance.interceptors.response.use(
 
                 localStorage.setItem('access_token', accessToken);
                 localStorage.setItem('refresh_token', newRefreshToken);
+                Cookies.set('refresh_token', newRefreshToken, {
+                    expires: 30,
+                    secure: true,
+                    sameSite: 'strict'
+                });
 
                 // Retry the original request with the new token
                 originalRequest.headers.Authorization = `Bearer ${accessToken}`;
@@ -57,6 +67,7 @@ instance.interceptors.response.use(
                 // If refresh token fails, redirect to login
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('refresh_token');
+                Cookies.remove('refresh_token');
                 window.location.href = '/admin/login';
                 return Promise.reject(error);
             }

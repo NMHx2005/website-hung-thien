@@ -32,6 +32,25 @@ export interface IService {
     updatedAt?: Date;
 }
 
+export interface IEvent {
+    _id: string;
+    title: string;
+    slug: string;
+    excerpt?: string;
+    content: string;
+    image: string;
+    categories: string[];
+    tags: string[];
+    location?: string;
+    eventDate?: string;
+    endDate?: string;
+    isFeatured: boolean;
+    isPublished: boolean;
+    publishedAt?: string;
+    createdAt?: string;
+    updatedAt?: string;
+}
+
 export interface ITeamMember {
     _id: string;
     name: string;

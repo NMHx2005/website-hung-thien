@@ -11,7 +11,7 @@ interface LoginForm {
 }
 
 const Login: React.FC = () => {
-    const { login } = useAuth();
+    const { login } = useAuth({ skipInitialCheck: true });
     const [form] = Form.useForm();
 
     const onFinish = async (values: LoginForm) => {
@@ -40,9 +40,9 @@ const Login: React.FC = () => {
                             { type: 'email', message: 'Email không hợp lệ!' }
                         ]}
                     >
-                        <Input 
-                            prefix={<UserOutlined />} 
-                            placeholder="Email" 
+                        <Input
+                            prefix={<UserOutlined />}
+                            placeholder="Email"
                             size="large"
                         />
                     </Form.Item>

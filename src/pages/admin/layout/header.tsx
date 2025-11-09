@@ -9,7 +9,7 @@ const { Header: AntHeader } = Layout;
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
-    const { logout } = useAuth();
+    const { logout } = useAuth({ skipInitialCheck: true });
 
     const items: MenuProps['items'] = [
         {

@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Layout, Menu } from 'antd';
 import {
-    DashboardOutlined,
-    FileOutlined,
-    CustomerServiceOutlined,
-    UserOutlined,
     MenuFoldOutlined,
-    MenuUnfoldOutlined
+    MenuUnfoldOutlined,
+    CalendarOutlined
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
@@ -18,33 +15,29 @@ const Sidebar: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const menuItems = [
-        {
-            key: '/admin',
-            icon: <DashboardOutlined />,
-            label: 'Dashboard'
-        },
-        {
-            key: '/admin/pages',
-            icon: <FileOutlined />,
-            label: 'Quản lý trang'
-        },
-        {
-            key: '/admin/services',
-            icon: <CustomerServiceOutlined />,
-            label: 'Quản lý dịch vụ'
-        },
-        {
-            key: '/admin/users',
-            icon: <UserOutlined />,
-            label: 'Quản lý người dùng'
-        }
-    ];
+    const menuItems = useMemo(
+        () => [
+            {
+                key: '/admin',
+                icon: <CalendarOutlined />,
+                label: 'Tin tức & Sự kiện'
+            }
+        ],
+        []
+    );
+
+    const selectedKeys = useMemo(() => {
+        const match = [...menuItems]
+            .map((item) => item.key)
+            .filter((key) => location.pathname.startsWith(key))
+            .sort((a, b) => b.length - a.length)[0];
+        return [match || location.pathname];
+    }, [location.pathname, menuItems]);
 
     return (
-        <Sider 
-            collapsible 
-            collapsed={collapsed} 
+        <Sider
+            collapsible
+            collapsed={collapsed}
             onCollapse={setCollapsed}
             trigger={null}
             className="admin-sidebar"
@@ -58,7 +51,7 @@ const Sidebar: React.FC = () => {
             <Menu
                 theme="dark"
                 mode="inline"
-                selectedKeys={[location.pathname]}
+                selectedKeys={selectedKeys}
                 items={menuItems}
                 onClick={({ key }) => navigate(key)}
             />
