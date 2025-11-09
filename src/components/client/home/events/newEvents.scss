@@ -47,7 +47,7 @@
     display: grid;
     gap: 16px;
     max-width: 640px;
-    margin: 0 auto;
+    margin: 0 auto 32px auto;
 
     .events-badge {
         display: inline-flex;
@@ -77,7 +77,12 @@
         line-height: 1.7;
     }
 }
-
+@media (max-width: 768px) {
+    .events-heading {
+        margin: 0;
+        width: calc(100vw - 64px);
+    }
+}
 .events-content {
     position: relative;
 }

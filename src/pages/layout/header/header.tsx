@@ -1,6 +1,7 @@
 import { MenuOutlined } from "@ant-design/icons";
-import "./header.scss"
+import "./header.scss";
 import { Dropdown, MenuProps, Space } from "antd";
+import logo from "@/assets/images/logo_HungThien.png";
 
 const Header = () => {
 
@@ -51,13 +52,13 @@ const Header = () => {
                         </Dropdown>
                     </Space>
                 </Space>
-                <div className="container" >
+                <div className="container">
                     <div className="header__content--left">
-                        <img src="/images/logo_HungThien.png"
-                            alt="Logo with abstract design"
-                            className="logo"
+                        <img
+                            src={logo}
+                            alt="Hung Thien logo"
+                            className="header__logo-image"
                         />
-                        <div className="title" >HÙNG DÂN</div>
                     </div>
                 </div>
             </header>

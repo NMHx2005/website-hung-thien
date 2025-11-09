@@ -102,7 +102,7 @@ export const NewEvents = () => {
                 >
                     <span className="events-badge">Bản tin</span>
                     <h2>Tin tức & sự kiện nổi bật</h2>
-                    <p>Cập nhật hoạt động mới nhất và những câu chuyện truyền cảm hứng từ Hùng Thiên.</p>
+                    <p>Cập nhật hoạt động mới nhất và những câu chuyện truyền cảm hứng từ Hùng Dân.</p>
                 </motion.div>
 
                 <div className="events-content">
