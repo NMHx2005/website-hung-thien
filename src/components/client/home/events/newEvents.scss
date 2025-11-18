@@ -81,6 +81,9 @@
     .events-heading {
         margin: 0;
         width: calc(100vw - 64px);
+        h2 {
+            font-size: 28px;
+        }
     }
 }
 .events-content {

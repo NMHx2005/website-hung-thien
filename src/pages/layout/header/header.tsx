@@ -1,4 +1,3 @@
-import { MenuOutlined } from "@ant-design/icons";
 import "./header.scss";
 import { Dropdown, MenuProps, Space } from "antd";
 import logo from "@/assets/images/logo_HungThien.png";
@@ -9,7 +8,7 @@ const Header = () => {
         {
             key: '1',
             label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                <a target="_blank" rel="noopener noreferrer" href="https://zalo.me/0349740717">
                     Tư Vấn Ngay
                 </a>
             ),
@@ -17,7 +16,7 @@ const Header = () => {
         {
             key: '2',
             label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                <a target="_blank" rel="noopener noreferrer" href="mailto:hungnhandan@gmail.com">
                     Liên Hệ
                 </a>
             ),
@@ -25,7 +24,7 @@ const Header = () => {
         {
             key: '3',
             label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+                <a target="_blank" rel="noopener noreferrer" href="https://zalo.me/0349740717">
                     Cộng Tác
                 </a>
             ),
@@ -47,7 +46,7 @@ const Header = () => {
                         <Dropdown menu={{ items }} placement="bottomRight" arrow={{ pointAtCenter: true }}>
                             {/* <Button>bottomRight</Button> */}
                             <div className="menu-icon" >
-                                <MenuOutlined style={{ fontSize: '24px' }} />
+                                <img src="/images/ngoisao.png" alt="Menu" style={{ width: '24px', height: '24px' }} />
                             </div>
                         </Dropdown>
                     </Space>

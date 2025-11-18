@@ -20,7 +20,7 @@
     .menu-icon {
         position: absolute;
         top: 20px;
-        right: 20px;
+        left: 20px;
         font-size: 24px;
         cursor: pointer;
         display: none;
@@ -89,7 +89,9 @@
 
 
 @media (max-width: 767px) {
-
+    .header {
+        height: 50vh;
+    }
     .header .container {
         flex-wrap: wrap;
     }

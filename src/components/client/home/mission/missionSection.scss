@@ -2,8 +2,7 @@
     position: relative;
     overflow: hidden;
     padding: clamp(72px, 13vw, 140px) 0;
-    background: linear-gradient(160deg, rgba(3, 0, 12, 0.9), rgba(8, 3, 20, 0.7)),
-        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    background:         url('./images/metoi.png') center/cover no-repeat;
     color: #fdfdfd;
 }
 
@@ -89,6 +88,12 @@
     .mission-section {
         padding: 72px 0 88px;
         background-position: center;
+        h1 {
+            font-size: 32px;
+        }
+    }
+    .mission-body h2 {
+        font-size: 24px;
     }
 }
 

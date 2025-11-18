@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageOutlined, CloseOutlined, PhoneOutlined } from '@ant-design/icons'; // Thêm CloseOutlined cho nút X
+import { MessageOutlined, CloseOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons'; // Thêm CloseOutlined cho nút X
 import './ButtonContact.scss';
 
 const ButtonContact = () => {
     const [isOpen, setIsOpen] = useState(false); // Trạng thái mở/đóng popup
-    const popupRef = useRef(null); // Ref để kiểm tra click bên ngoài
+    const popupRef = useRef<HTMLDivElement>(null); // Ref để kiểm tra click bên ngoài
 
     // Xử lý mở/đóng popup
     const togglePopup = () => {
@@ -12,8 +12,8 @@ const ButtonContact = () => {
     };
 
     // Xử lý click bên ngoài để đóng popup
-    const handleClickOutside = () => {
-        if (popupRef.current) {
+    const handleClickOutside = (event: MouseEvent) => {
+        if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
             setIsOpen(false);
         }
     };
@@ -50,19 +50,7 @@ const ButtonContact = () => {
                 <div className="contact-popup" ref={popupRef}>
                     <div className="popup-item">
                         <a
-                            href="https://m.me/your-messenger-id"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <div className="popup-icon messenger-icon">
-                                <MessageOutlined />
-                            </div>
-                            <span>Messenger</span>
-                        </a>
-                    </div>
-                    <div className="popup-item">
-                        <a
-                            href="https://zalo.me/your-zalo-id"
+                            href="https://zalo.me/0349740717"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -73,11 +61,23 @@ const ButtonContact = () => {
                         </a>
                     </div>
                     <div className="popup-item">
-                        <a href="tel:+1234567890">
+                        <a href="tel:0349740717">
                             <div className="popup-icon phone-icon">
                                 <PhoneOutlined />
                             </div>
                             <span>Gọi ngay</span>
+                        </a>
+                    </div>
+                    <div className="popup-item">
+                        <a
+                            href="mailto:hungnhandan@gmail.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <div className="popup-icon email-icon">
+                                <MailOutlined />
+                            </div>
+                            <span>Email</span>
                         </a>
                     </div>
                     {/* <div className="close-button" onClick={togglePopup}>

@@ -189,7 +189,7 @@
     }
 
     &__heading {
-        font-size: clamp(2.6rem, 4vw, 3.9rem);
+        font-size: 48px;
         line-height: 1.08;
         margin: 0 0 24px;
         font-weight: 700;
@@ -420,6 +420,9 @@
 }
 
 @media (max-width: 600px) {
+    .brand-hero__heading {
+        font-size: 28px;
+    }
     .brand-hero {
         padding: 72px 0 96px;
 

@@ -6,25 +6,25 @@ const BenefitsSection = () => {
     const benefits = [
         {
             title: 'Thiết kế website chuyên nghiệp',
-            icon: <ShoppingCartOutlined />,
+            icon: <img src="./images/iconwebx.png" alt="web" style={{ width: '100%', height: '100%' }} />,
             description:
                 'Hùng Dân cung cấp dịch vụ thiết kế website hiện đại, responsive tối ưu cho mọi thiết bị, giao diện thân thiện và trải nghiệm người dùng tuyệt vời.'
         },
         {
             title: 'Xây dựng thiết kế UI/UX hiện đại',
-            icon: <SoundOutlined />,
+            icon: <img src="./images/iconngoisao.png" alt="ux" style={{ width: '100%', height: '100%' }} />,
             description:
                 'Hùng Dân chuyên xây dựng thiết kế giao diện người dùng (UI) và trải nghiệm người dùng (UX) hiện đại, tối ưu hóa cho từng đối tượng khách hàng.'
         },
         {
-            title: 'Phát triển ứng dụng web toàn diện',
-            icon: <StarOutlined />,
+            title: 'Xây dựng CRM ERP quản lý doanh nghiệp',
+            icon: <img src="./images/iconapp.png" alt="erp" style={{ width: '100%', height: '100%' }} />,
             description:
                 'Hùng Dân phát triển các ứng dụng web đa nền tảng, từ website doanh nghiệp đến hệ thống quản lý phức tạp, đáp ứng mọi nhu cầu kinh doanh.'
         },
         {
             title: 'Đội ngũ chuyên gia giàu kinh nghiệm',
-            icon: <CustomerServiceOutlined />,
+            icon: <img src="./images/crmerp.png" alt="crm" style={{ width: '100%', height: '100%' }} />,
             description:
                 'Hùng Dân sở hữu đội ngũ chuyên gia giàu kinh nghiệm trong lĩnh vực thiết kế website, xây dựng thiết kế đồ họa và phát triển phần mềm, đảm bảo chất lượng cao.'
         }

@@ -4,15 +4,15 @@ import "./partner.scss";
 const Partner = () => {
     const services = [
         "Tư vấn chiến lược chuyển đổi số toàn diện",
-        "Xây dựng hệ thống vận hành & CRM chuyên biệt",
-        "Thiết kế nhận diện thương hiệu đa kênh",
+        "Xây dựng CRM ERP quản lý doanh nghiệp",
+        "Thiết kế bộ nhận diện thương hiệu",
         "Tạo lập trải nghiệm khách hàng đột phá"
     ];
 
     const stats = [
-        { value: "x+", label: "Năm đồng hành cùng doanh nghiệp" },
-        { value: "2000+", label: "Dự án triển khai thành công" },
-        { value: "98%", label: "Khách hàng quay lại hợp tác" }
+        { value: "4+", label: "Năm đồng hành cùng doanh nghiệp" },
+        { value: "200+", label: "Dự án triển khai thành công" },
+        { value: "97%", label: "Khách hàng quay lại hợp tác" }
     ];
 
     const containerVariants = {
@@ -58,8 +58,7 @@ const Partner = () => {
                             Đồng hành xây dựng thương hiệu dẫn đầu kỷ nguyên số
                         </h2>
                         <p className="brand-hero__description">
-                            Từ chiến lược vận hành đến trải nghiệm khách hàng, Hùng Thiên thiết kế lộ trình tăng trưởng
-                            phù hợp cho từng doanh nghiệp để bạn bứt phá ở bất kỳ giai đoạn nào.
+                            Tư chiến lược vận hành đến trải nghiệm khách hàng, HÙNG DÂN hỗ trợ giải pháp chuyển đổi số áp dụng công nghệ vào doanh nghiệp, thiết kế lộ trình tăng trưởng phù hợp cho từng doanh nghiệp để bứt phá ở bất kỳ giai đoạn nào.
                         </p>
                         <motion.ul
                             className="brand-hero__services"
@@ -89,14 +88,14 @@ const Partner = () => {
                             >
                                 Liên hệ tư vấn
                             </motion.button>
-                            <motion.button
+                            {/* <motion.button
                                 className="brand-hero__btn brand-hero__btn--ghost"
                                 whileHover={{ y: -3, boxShadow: "0 18px 32px rgba(247, 91, 91, 0.25)" }}
                                 whileTap={{ scale: 0.98 }}
                                 type="button"
                             >
                                 Nhận brochure
-                            </motion.button>
+                            </motion.button> */}
                         </div>
                     </motion.div>
 
@@ -127,12 +126,12 @@ const Partner = () => {
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <div className="brand-hero__card-header">
+                            {/* <div className="brand-hero__card-header">
                                 <span className="brand-hero__card-badge">Case Study</span>
                                 <span className="brand-hero__card-legend">Bộ giải pháp 90 ngày</span>
-                            </div>
+                            </div> */}
                             <h3 className="brand-hero__card-title">
-                                Tăng trưởng 3x leads cho doanh nghiệp công nghệ chỉ sau một quý
+                                Chuyển đổi số áp dụng công nghệ hỗ trợ doanh nghiệp doanh nghiệp
                             </h3>
                             <p className="brand-hero__card-description">
                                 Nâng cấp hệ thống CRM, tái thiết kế website và xây dựng chiến dịch trải nghiệm khách hàng đa kênh
@@ -144,7 +143,7 @@ const Partner = () => {
                                 </div>
                                 <div>
                                     <div className="brand-hero__client-name">Nguyễn Tiến Hùng</div>
-                                    <div className="brand-hero__client-role">Giám đốc điều hành Hung Dan</div>
+                                    <div className="brand-hero__client-role">Giám đốc điều hành HÙNG DÂN</div>
                                 </div>
                                 <motion.button
                                     className="brand-hero__view-more"
@@ -152,7 +151,7 @@ const Partner = () => {
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}
                                 >
-                                    Xem chi tiết
+                                    Liên hệ
                                 </motion.button>
                             </div>
                         </motion.div>
