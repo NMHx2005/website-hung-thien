@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from '@/utils/axios';
+import axios, { AxiosResponse } from '@/utils/axios';
 import Cookies from 'js-cookie';
 
 interface UseAuthOptions {
@@ -47,7 +47,7 @@ export const useAuth = (options: UseAuthOptions = {}) => {
                         throw new Error('Missing refresh token');
                     }
 
-                    const response = await axios.post<{ success: boolean; accessToken: string; refreshToken: string }>('/api/auth/refresh-token', {
+                    const response: AxiosResponse<{ success: boolean; accessToken: string; refreshToken: string }> = await axios.post('/api/auth/refresh-token', {
                         refreshToken
                     });
 
@@ -88,7 +88,7 @@ export const useAuth = (options: UseAuthOptions = {}) => {
     }, [navigate, location.pathname, skipInitialCheck, clearTokens]);
 
     const login = useCallback(async (email: string, password: string) => {
-        const response = await axios.post<{ success: boolean; accessToken: string; refreshToken: string }>('/api/auth/login', {
+        const response: AxiosResponse<{ success: boolean; accessToken: string; refreshToken: string }> = await axios.post('/api/auth/login', {
             email,
             password
         });
