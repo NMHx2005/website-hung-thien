@@ -47,13 +47,15 @@ export const useAuth = (options: UseAuthOptions = {}) => {
                         throw new Error('Missing refresh token');
                     }
 
-                    const tokens = await axios.post<{ accessToken: string; refreshToken: string }>('/api/auth/refresh-token', {
+                    const response = await axios.post<{ success: boolean; accessToken: string; refreshToken: string }>('/api/auth/refresh-token', {
                         refreshToken
                     });
 
-                    localStorage.setItem(ACCESS_TOKEN_KEY, tokens.accessToken);
-                    localStorage.setItem(REFRESH_TOKEN_KEY, tokens.refreshToken);
-                    Cookies.set(REFRESH_TOKEN_KEY, tokens.refreshToken, {
+                    const { accessToken, refreshToken: newRefreshToken } = response.data;
+
+                    localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+                    localStorage.setItem(REFRESH_TOKEN_KEY, newRefreshToken);
+                    Cookies.set(REFRESH_TOKEN_KEY, newRefreshToken, {
                         expires: 30,
                         secure: true,
                         sameSite: 'strict'
@@ -86,14 +88,16 @@ export const useAuth = (options: UseAuthOptions = {}) => {
     }, [navigate, location.pathname, skipInitialCheck, clearTokens]);
 
     const login = useCallback(async (email: string, password: string) => {
-        const tokens = await axios.post<{ accessToken: string; refreshToken: string }>('/api/auth/login', {
+        const response = await axios.post<{ success: boolean; accessToken: string; refreshToken: string }>('/api/auth/login', {
             email,
             password
         });
 
-        localStorage.setItem(ACCESS_TOKEN_KEY, tokens.accessToken);
-        localStorage.setItem(REFRESH_TOKEN_KEY, tokens.refreshToken);
-        Cookies.set(REFRESH_TOKEN_KEY, tokens.refreshToken, {
+        const { accessToken, refreshToken } = response.data;
+
+        localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+        localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
+        Cookies.set(REFRESH_TOKEN_KEY, refreshToken, {
             expires: 30,
             secure: true,
             sameSite: 'strict'

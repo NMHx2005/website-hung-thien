@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ShoppingCartOutlined, SoundOutlined, StarOutlined, CustomerServiceOutlined } from '@ant-design/icons'; // Sử dụng icon từ Ant Design
 import './BenefitsSection.scss';
 
 const BenefitsSection = () => {
