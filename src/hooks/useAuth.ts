@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios, { AxiosResponse } from '@/utils/axios';
+import axios from '@/utils/axios';
+import type { AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 
 interface UseAuthOptions {
